@@ -10,6 +10,8 @@ title: "{{ comic.name }} | Comedian"
 
 {% set comicSlug = (comic.slug or comic.name) | slugify %}
 {% set submissionLink = comic.bioUpdateUrl or ((site.bioSubmissionBaseUrl and (site.bioSubmissionBaseUrl ~ '?comedian=' ~ comicSlug)) or '') %}
+{% set draftToken = comic.bioDraftToken or ((comicSlug ~ '-draft-' ~ (comic.date or '')) | slugify) %}
+{% set draftPreviewLink = '/comedians/' ~ comicSlug ~ '/?draft=' ~ draftToken %}
 <section class="page-head">
     <p class="eyebrow">Performer Profile</p>
     <h1>{{ comic.name }}</h1>
@@ -18,15 +20,29 @@ title: "{{ comic.name }} | Comedian"
 <section class="panel split performer-detail">
     <img class="performer-image detail"
          src="{{ comic.image }}"
-         alt="Portrait of {{ comic.name }}" />
+         alt="Portrait of {{ comic.name }}"
+         width="900"
+         height="700" />
     <div>
         <p><strong>Appearing:</strong> {{ comic.date | readableDate }}</p>
         <p><strong>Show Type:</strong> {{ comic.showType }}</p>
         <p><strong>Credits:</strong> {{ comic.credits }}</p>
         <h2>Biography</h2>
-        <p>{{ comic.bio }}</p>
+        <div data-approved-bio>
+            <p>{{ comic.bio }}</p>
+        </div>
         {% if comic.bioStatus == 'pending' %}
             <p class="muted">A bio update draft is currently pending club approval.</p>
+        {% endif %}
+        {% if comic.bioStatus == 'pending' and comic.pendingBio %}
+            <article class="card"
+                     data-draft-preview
+                     data-draft-token="{{ draftToken }}"
+                     hidden>
+                <p class="eyebrow">Private Draft Preview</p>
+                <p>{{ comic.pendingBio }}</p>
+            </article>
+            <p class="muted" data-draft-preview-hint hidden>You are viewing a private draft preview link.</p>
         {% endif %}
         {% set comicKey = comicSlug %}
         {% set linkedShows = comicShowMap[comicKey] or [] %}
@@ -55,6 +71,12 @@ title: "{{ comic.name }} | Comedian"
                                    target="_blank"
                                    rel="noopener noreferrer">Submit Bio Update</a>
                             {% endif %}
+                            {% if comic.bioStatus == 'pending' and comic.pendingBio %}
+                                <a class="button ghost"
+                                   href="{{ draftPreviewLink }}"
+                                   target="_blank"
+                                   rel="noopener noreferrer">Private Draft Link</a>
+                            {% endif %}
                         </div>
                     </article>
                 {% endfor %}
@@ -70,7 +92,39 @@ title: "{{ comic.name }} | Comedian"
                        rel="noopener noreferrer">Submit Bio Update</a>
                 </p>
             {% endif %}
+            {% if comic.bioStatus == 'pending' and comic.pendingBio %}
+                <p>
+                    <a class="button ghost"
+                       href="{{ draftPreviewLink }}"
+                       target="_blank"
+                       rel="noopener noreferrer">Private Draft Link</a>
+                </p>
+            {% endif %}
         {% endif %}
         <a class="button" href="/comedians/">Back to all comedians</a>
     </div>
 </section>
+{% if comic.bioStatus == 'pending' and comic.pendingBio %}
+    <script>
+        (() => {
+            const preview = document.querySelector('[data-draft-preview]');
+            if (!preview) {
+                return;
+            }
+
+            const expectedToken = preview.getAttribute('data-draft-token') || '';
+            const params = new URLSearchParams(window.location.search);
+            const providedToken = params.get('draft') || '';
+
+            if (!expectedToken || providedToken !== expectedToken) {
+                return;
+            }
+
+            preview.hidden = false;
+            const hint = document.querySelector('[data-draft-preview-hint]');
+            if (hint) {
+                hint.hidden = false;
+            }
+        })();
+    </script>
+{% endif %}

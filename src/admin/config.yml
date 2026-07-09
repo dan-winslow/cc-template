@@ -114,15 +114,16 @@ collections:
               - { label: "Blurb", name: "blurb", widget: "text" }
               - { label: "Image URL", name: "image", widget: "string" }
               - { label: "Biography", name: "bio", widget: "text" }
-              - { label: "Bio Update Link (share with comedian/manager)", name: "bioUpdateUrl", widget: "string", required: false }
+              - { label: "Bio Update Link Override", name: "bioUpdateUrl", widget: "string", required: false, hint: "Optional override. If empty, link is auto-generated from Site Settings -> Bio Submission Base URL + comedian slug." }
               - label: "Bio Status"
                 name: "bioStatus"
                 widget: "select"
                 default: "approved"
                 options:
                   - { label: "Approved", value: "approved" }
-                  - { label: "Pending Review", value: "pending" }
-              - { label: "Pending Bio Draft (internal)", name: "pendingBio", widget: "text", required: false }
+                  - { label: "Draft Pending Review", value: "pending" }
+              - { label: "Pending Bio Draft", name: "pendingBio", widget: "text", required: false, hint: "Use with Bio Status = Draft Pending Review." }
+              - { label: "Private Draft Token", name: "bioDraftToken", widget: "string", required: false, hint: "Optional token for private draft preview links. If empty, a default token is derived from slug + date." }
               - { label: "Credits", name: "credits", widget: "string" }
               - { label: "Show Type", name: "showType", widget: "string" }
 

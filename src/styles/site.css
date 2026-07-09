@@ -276,6 +276,17 @@ p {
   opacity: 0.78;
 }
 
+.link-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.copy-status {
+  min-height: 1.1rem;
+  margin-top: -0.2rem;
+}
+
 .split {
   display: grid;
   gap: 1rem;
