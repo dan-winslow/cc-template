@@ -197,6 +197,9 @@
                             if (parsed.origin !== window.location.origin) {
                                 return;
                             }
+                            if (parsed.pathname === '/admin' || parsed.pathname.startsWith('/admin/')) {
+                                return;
+                            }
                             parsed.searchParams.set('location', activeLocation);
                             const nextHref = `${parsed.pathname}${parsed.search}${parsed.hash}`;
                             link.setAttribute('href', nextHref);
