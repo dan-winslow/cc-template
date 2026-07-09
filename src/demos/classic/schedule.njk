@@ -1,0 +1,97 @@
+---
+layout: layouts/base.njk
+title: Show Schedule
+permalink: /demos/classic/schedule/index.html
+---
+
+<section class="page-head">
+    <h1>Show Schedule</h1>
+    <p>Update this page from your CMS to keep regulars and first-timers in the loop.</p>
+</section>
+{% if site.ticketing and site.ticketing.enabled %}
+    <section class="panel ticketing-panel">
+        <h2>Buy Tickets</h2>
+        <p>Integrated with {{ site.ticketing.platformName or 'your ticketing platform' }} for direct checkout.</p>
+        {% if site.ticketing.eventsPageUrl %}
+            <a class="button"
+               href="{{ site.ticketing.eventsPageUrl }}"
+               target="_blank"
+               rel="noopener noreferrer">Open Ticketing Platform</a>
+        {% endif %}
+        {% if site.ticketing.embedUrl %}
+            <div class="ticket-embed">
+                <iframe src="{{ site.ticketing.embedUrl }}"
+                        title="Ticketing widget"
+                        loading="lazy"></iframe>
+            </div>
+        {% endif %}
+    </section>
+{% endif %}
+{% set calendar = shows.items | toCalendar %}
+{% if calendar.length %}
+    {% for month in calendar %}
+        <section class="panel calendar-wrap">
+            <h2>{{ month.title }}</h2>
+            <div class="calendar-grid"
+                 role="table"
+                 aria-label="{{ month.title }} show calendar">
+                <div class="calendar-head" role="rowgroup">
+                    <span>Sun</span>
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+                </div>
+                <div class="calendar-body" role="rowgroup">
+                    {% for week in month.weeks %}
+                        {% for day in week %}
+                            {% if day %}
+                                <article class="calendar-cell" role="cell">
+                                    <p class="calendar-day">{{ day.day }}</p>
+                                    {% if day.shows.length %}
+                                        <ul class="calendar-events">
+                                            {% for show in day.shows %}
+                                                <li>
+                                                    <strong>{{ show.time | readableTime }}</strong>
+                                                    {% if show.ticketUrl %}
+                                                        <a href="{{ show.ticketUrl }}" target="_blank" rel="noopener noreferrer">{{ show.title }}</a>
+                                                    {% else %}
+                                                        <span>{{ show.title }}</span>
+                                                    {% endif %}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% else %}
+                                        <p class="muted calendar-empty">No show</p>
+                                    {% endif %}
+                                </article>
+                            {% else %}
+                                <article class="calendar-cell empty" aria-hidden="true"></article>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {% endfor %}
+{% endif %}
+<section class="cards three-up">
+    {% for show in shows.items %}
+        <article class="card">
+            <p class="eyebrow">{{ show.date | readableDate }}</p>
+            <h2>{{ show.title }}</h2>
+            <p><strong>{{ show.time | readableTime }}</strong> | Hosted by {{ show.host }}</p>
+            <p>Headliner: {{ show.headliner }}</p>
+            <p class="muted">{{ show.notes }}</p>
+            <p class="price">Tickets {{ show.ticketPrice }}</p>
+            {% if show.ticketUrl %}
+                <a class="button ticket-button"
+                   href="{{ show.ticketUrl }}"
+                   target="_blank"
+                   rel="noopener noreferrer">Buy Tickets</a>
+            {% endif %}
+        </article>
+    {% endfor %}
+</section>

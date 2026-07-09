@@ -1,0 +1,77 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: comedians.items
+  size: 1
+  alias: comic
+permalink: "/{{ (comic.slug or comic.name) | slugify }}/index.html"
+title: "{{ comic.name }} | Upcoming Shows"
+---
+
+{% set comicSlug = (comic.slug or comic.name) | slugify %}
+{% set linkedShows = comicShowMap[comicSlug] or [] %}
+{% set oneShow = linkedShows.length == 1 and linkedShows[0].ticketUrl and not (site.locations and site.locations.length > 1) %}
+{% if oneShow %}
+    <section class="page-head">
+        <h1>Redirecting to {{ comic.name }} tickets...</h1>
+        <p>If you are not redirected, use the button below.</p>
+    </section>
+    <section class="panel">
+        <p class="eyebrow">{{ linkedShows[0].date | readableDate }} at {{ linkedShows[0].time | readableTime }}</p>
+        <h2>{{ linkedShows[0].title }}</h2>
+        <p>
+            <a id="auto-ticket-link"
+               class="button"
+               href="{{ linkedShows[0].ticketUrl }}"
+               target="_blank"
+               rel="noopener noreferrer">Buy Tickets</a>
+        </p>
+        <p>
+            <a class="text-link" href="/comedians/{{ comicSlug }}/">View Full Profile</a>
+        </p>
+    </section>
+    <script>
+        (() => {
+            const link = document.getElementById('auto-ticket-link');
+            if (link && link.href) {
+                window.location.replace(link.href);
+            }
+        })();
+    </script>
+{% else %}
+    <section class="page-head">
+        <p class="eyebrow">Upcoming Comedian Feed</p>
+        <h1>{{ comic.name }}</h1>
+        <p>{{ comic.blurb }}</p>
+    </section>
+    <section class="panel">
+        <h2>Upcoming Shows</h2>
+        {% if linkedShows.length %}
+            <div class="cards two-up profile-shows"
+                 data-location-group="comic-short-shows">
+                {% for show in linkedShows %}
+                    <article class="card" data-location-item="{{ show.locationSlug or '' }}">
+                        <p class="eyebrow">{{ show.date | readableDate }}</p>
+                        <h3>{{ show.title }}</h3>
+                        <p><strong>{{ show.time | readableTime }}</strong></p>
+                        {% if show.ticketPrice %}
+                            <p class="price">Tickets {{ show.ticketPrice }}</p>
+                        {% endif %}
+                        {% if show.ticketUrl %}
+                            <a class="button ticket-button"
+                               href="{{ show.ticketUrl }}"
+                               target="_blank"
+                               rel="noopener noreferrer">Buy Tickets</a>
+                        {% endif %}
+                    </article>
+                {% endfor %}
+            </div>
+            <p class="muted" data-location-empty="comic-short-shows" hidden>No upcoming shows are listed for this location.</p>
+        {% else %}
+            <p class="muted">No upcoming shows are currently listed for this comedian.</p>
+        {% endif %}
+        <p>
+            <a class="text-link" href="/comedians/{{ comicSlug }}/">View Full Profile + Bio</a>
+        </p>
+    </section>
+{% endif %}

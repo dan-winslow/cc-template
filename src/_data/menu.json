@@ -1,0 +1,42 @@
+{
+  "food": [
+    {
+      "name": "Backstage Nachos",
+      "locationSlug": "downtown",
+      "description": "House queso, jalapeno relish, scallions.",
+      "price": "$12"
+    },
+    {
+      "name": "Green Room Sliders",
+      "locationSlug": "west-loop",
+      "description": "Three smash sliders with onion jam.",
+      "price": "$14"
+    },
+    {
+      "name": "Open Mic Fries",
+      "locationSlug": "downtown",
+      "description": "Crispy fries with truffle aioli.",
+      "price": "$8"
+    }
+  ],
+  "drinks": [
+    {
+      "name": "Two-Drink Minimum",
+      "locationSlug": "downtown",
+      "description": "Vodka, citrus, elderflower, bubbles.",
+      "price": "$13"
+    },
+    {
+      "name": "Headliner Old Fashioned",
+      "locationSlug": "west-loop",
+      "description": "Bourbon, bitters, orange peel.",
+      "price": "$14"
+    },
+    {
+      "name": "Designated Laugher",
+      "locationSlug": "west-loop",
+      "description": "NA gin, tonic, cucumber.",
+      "price": "$10"
+    }
+  ]
+}

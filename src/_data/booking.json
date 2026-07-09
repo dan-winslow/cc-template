@@ -1,0 +1,25 @@
+{
+  "packages": [
+    {
+      "name": "Private Showcase",
+      "locationSlug": "downtown",
+      "description": "Exclusive room rental with 3 curated comics and host.",
+      "startingPrice": "$2,500",
+      "capacity": "Up to 120 guests"
+    },
+    {
+      "name": "Corporate Night",
+      "locationSlug": "west-loop",
+      "description": "MC, tailored set themes, and AV support.",
+      "startingPrice": "$3,800",
+      "capacity": "Up to 180 guests"
+    },
+    {
+      "name": "Fundraiser Set",
+      "locationSlug": "downtown",
+      "description": "Ticketed charity event with custom partner branding.",
+      "startingPrice": "$1,900",
+      "capacity": "Up to 150 guests"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+---
+layout: layouts/base.njk
+title: Comedian Bio Portal
+permalink: /bio-portal/index.html
+---
+
+<section class="page-head">
+    <h1>Comedian Bio Portal</h1>
+    <p>Share an individual update link with each comedian, manager, or publicist.</p>
+</section>
+<section class="panel">
+    <div class="cards two-up">
+        {% for comic in comedians.items %}
+            {% set comicSlug = (comic.slug or comic.name) | slugify %}
+            {% set submissionLink = comic.bioUpdateUrl or ((site.bioSubmissionBaseUrl and (site.bioSubmissionBaseUrl ~ '?comedian=' ~ comicSlug)) or '') %}
+            <article class="card">
+                <p class="eyebrow">Status: {{ comic.bioStatus or 'approved' }}</p>
+                <h2>{{ comic.name }}</h2>
+                <p class="muted">Share URL: /{{ comicSlug }}</p>
+                {% if submissionLink %}
+                    <p>
+                        <a class="button"
+                           href="{{ submissionLink }}"
+                           target="_blank"
+                           rel="noopener noreferrer">Open Bio Submission Link</a>
+                    </p>
+                {% else %}
+                    <p class="muted">No bio submission link configured yet.</p>
+                {% endif %}
+                {% if comic.bioStatus == 'pending' and comic.pendingBio %}
+                    <p><strong>Pending Draft Preview:</strong> {{ comic.pendingBio }}</p>
+                {% endif %}
+                <p>
+                    <a class="text-link" href="/comedians/{{ comicSlug }}/">Open Club Profile</a>
+                </p>
+            </article>
+        {% endfor %}
+    </div>
+</section>

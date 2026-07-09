@@ -1,0 +1,305 @@
+---
+layout: layouts/base.njk
+title: Laugh Track Lounge | Home
+---
+
+{% set navBase = basePath or '' %}
+<section class="hero">
+    <p class="kicker">
+        {% if site.locations and site.locations.length > 1 %}
+            <span data-active-location-name>{{ site.locations[0].name }}</span> live comedy club
+        {% else %}
+            {{ site.city }}'s late-night favorite
+        {% endif %}
+    </p>
+    <h1>{{ site.tagline }}</h1>
+    <p class="hero-copy">{{ site.description }}</p>
+    <div class="hero-actions">
+        <a class="button" href="{{ navBase }}/schedule/">See This Week's Shows</a>
+        <a class="button ghost" href="{{ navBase }}/book/">Plan a Private Event</a>
+    </div>
+</section>
+<section class="panel">
+    <h2>Club Gallery</h2>
+    <div class="gallery-carousel" data-carousel>
+        <button class="carousel-arrow"
+                type="button"
+                data-dir="-1"
+                aria-label="Previous slide">&#8249;</button>
+        <div class="gallery-viewport" data-carousel-viewport>
+            {% for comic in comedians.items %}
+                <figure class="gallery-slide">
+                    <img src="{{ comic.image }}"
+                         alt="{{ comic.name }} performing live"
+                         loading="lazy" />
+                    <figcaption>{{ comic.name }} • {{ comic.showType }}</figcaption>
+                </figure>
+            {% endfor %}
+        </div>
+        <button class="carousel-arrow"
+                type="button"
+                data-dir="1"
+                aria-label="Next slide">&#8250;</button>
+    </div>
+    <div class="carousel-dots" data-carousel-dots aria-label="Gallery slides">
+        {% for comic in comedians.items %}
+            <button class="carousel-dot{% if loop.first %} is-active{% endif %}"
+                    type="button"
+                    aria-label="Go to slide {{ loop.index }}"
+                    data-index="{{ loop.index0 }}"></button>
+        {% endfor %}
+    </div>
+    <a class="text-link" href="{{ navBase }}/comedians/">Explore performer profiles</a>
+</section>
+<section class="panel">
+    <h2>Upcoming Events</h2>
+    <div class="event-list" data-location-group="home-events">
+        {% for show in shows.items %}
+            <article class="event-item" data-location-item="{{ show.locationSlug or '' }}">
+                <img class="event-image"
+                     src="{{ show.image }}"
+                     alt="Poster for {{ show.title }}"
+                     loading="lazy" />
+                <div class="event-content">
+                    <p class="eyebrow">{{ show.date | readableDate }} at {{ show.time | readableTime }}</p>
+                    <h3>{{ show.title }}</h3>
+                    <p><strong>{{ show.headliner }}</strong></p>
+                    <p class="muted">Hosted by {{ show.host }}</p>
+                    <p>{{ show.notes }}</p>
+                    <p class="price">{{ show.ticketPrice }}</p>
+                    {% if show.ticketUrl %}
+                        <a class="button ticket-button"
+                           href="{{ show.ticketUrl }}"
+                           target="_blank"
+                           rel="noopener noreferrer">Buy Tickets</a>
+                    {% endif %}
+                </div>
+            </article>
+        {% endfor %}
+    </div>
+    <p class="muted" data-location-empty="home-events" hidden>No upcoming events are listed for this location yet.</p>
+    <a class="text-link" href="{{ navBase }}/schedule/">View full schedule</a>
+</section>
+{% if site.ticketing and site.ticketing.enabled %}
+    <section class="panel ticketing-panel">
+        <h2>Ticketing Integration</h2>
+        <p>
+            Powered by {{ site.ticketing.platformName or 'your ticketing platform' }}.
+            Send fans directly to your checkout flow.
+        </p>
+        {% if site.ticketing.eventsPageUrl %}
+            <a class="button"
+               href="{{ site.ticketing.eventsPageUrl }}"
+               target="_blank"
+               rel="noopener noreferrer">View All Ticketed Events</a>
+        {% endif %}
+    </section>
+{% endif %}
+<section class="panel split">
+    <div>
+        <h2>Featured Comedians</h2>
+        {% if home.featuredComedians and home.featuredComedians.length %}
+            <div class="featured-comics-grid"
+                 data-location-group="home-featured-comedians">
+                {% for comic in home.featuredComedians %}
+                    {% set comicSlug = (comic.slug or comic.name) | slugify %}
+                    <a class="featured-comic"
+                       href="/{{ comicSlug }}/"
+                       data-location-item="{{ comic.locationSlug or '' }}">
+                        {% if comic.image %}
+                            <img src="{{ comic.image }}"
+                                 alt="Portrait of {{ comic.name }}"
+                                 loading="lazy" />
+                        {% endif %}
+                        <div class="featured-comic-content">
+                            <p class="eyebrow">{{ comic.date | readableDate }}</p>
+                            <h3>{{ comic.name }}</h3>
+                            <p class="muted">{{ comic.blurb }}</p>
+                            {% if comic.showType %}
+                                <p class="price">{{ comic.showType }}</p>
+                            {% endif %}
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+            <p class="muted" data-location-empty="home-featured-comedians" hidden>Featured comedians for this location will appear here once assigned.</p>
+        {% else %}
+            <p class="muted">Featured comedians will appear automatically once profiles are uploaded.</p>
+        {% endif %}
+        <a class="text-link" href="{{ navBase }}/comedians/">See all upcoming comedians</a>
+    </div>
+    <aside class="notice">
+        <h3>Tonight's doors open {{ site.doorsOpen }}</h3>
+        <p>{{ site.promoCopy }}</p>
+    </aside>
+</section>
+{% if site.features.menuEnabled %}
+    <section class="panel">
+        <h2>Food + Drink Highlights</h2>
+        {% if home.menuHighlights and home.menuHighlights.length %}
+            <div class="menu-highlight-grid"
+                 data-location-group="home-menu-highlights">
+                {% for item in home.menuHighlights %}
+                    <article class="menu-highlight-card"
+                             data-location-item="{{ item.locationSlug or '' }}">
+                        {% if item.image %}<img src="{{ item.image }}" alt="{{ item.name }}" loading="lazy" />{% endif %}
+                        <div class="menu-highlight-content">
+                            {% if item.category %}
+                                <p class="eyebrow">{{ item.category }}</p>
+                            {% endif %}
+                            <h3>{{ item.name }}</h3>
+                            {% if item.description %}
+                                <p>{{ item.description }}</p>
+                            {% endif %}
+                            {% if item.price %}
+                                <p class="price">{{ item.price }}</p>
+                            {% endif %}
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+            <p class="muted" data-location-empty="home-menu-highlights" hidden>Menu highlights for this location will appear here once assigned.</p>
+        {% else %}
+            <p class="muted">Menu highlights will populate automatically after menu items are uploaded.</p>
+        {% endif %}
+        {% if menuOrdering and menuOrdering.enabled %}
+            <div class="ordering-actions">
+                <p class="muted">Online ordering powered by {{ menuOrdering.platformName }}.</p>
+                {% if menuOrdering.orderingUrl %}
+                    <a class="button"
+                       href="{{ menuOrdering.orderingUrl }}"
+                       target="_blank"
+                       rel="noopener noreferrer">{{ menuOrdering.ctaLabel }}</a>
+                {% endif %}
+            </div>
+        {% endif %}
+        <a class="text-link" href="{{ navBase }}/menu/">View the complete menu</a>
+    </section>
+{% endif %}
+<section class="panel">
+    <h2>Need Alternate Looks?</h2>
+    <p>Preview two sellable style directions for different club personalities.</p>
+    <a class="button" href="/demos/">Browse Demo Gallery</a>
+</section>
+<script>
+        (() => {
+                const carousels = document.querySelectorAll('[data-carousel]');
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+                for (const carousel of carousels) {
+                        const viewport = carousel.querySelector('[data-carousel-viewport]');
+                        const dotsWrap = carousel.parentElement.querySelector('[data-carousel-dots]');
+                        const dots = dotsWrap ? Array.from(dotsWrap.querySelectorAll('.carousel-dot')) : [];
+                        const arrows = Array.from(carousel.querySelectorAll('.carousel-arrow'));
+                        const originalSlides = viewport ? Array.from(viewport.children) : [];
+                        const slideCount = originalSlides.length;
+                        let index = 1;
+                        let autoplayTimer = null;
+                        let settleTimer = null;
+
+                        if (!viewport || slideCount < 2) {
+                                arrows.forEach((arrow) => {
+                                        arrow.hidden = true;
+                                });
+                                return;
+                        }
+
+                        const firstClone = originalSlides[0].cloneNode(true);
+                        const lastClone = originalSlides[slideCount - 1].cloneNode(true);
+                        firstClone.setAttribute('aria-hidden', 'true');
+                        lastClone.setAttribute('aria-hidden', 'true');
+                        viewport.prepend(lastClone);
+                        viewport.append(firstClone);
+
+                        const slideWidth = () => viewport.clientWidth;
+
+                        const syncDots = () => {
+                                const realIndex = (index - 1 + slideCount) % slideCount;
+                                dots.forEach((dot, dotIndex) => {
+                                        const isActive = dotIndex === realIndex;
+                                        dot.classList.toggle('is-active', isActive);
+                                        dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+                                });
+                        };
+
+                        const snapTo = (nextIndex, behavior = 'smooth') => {
+                                index = nextIndex;
+                                viewport.scrollTo({ left: index * slideWidth(), behavior });
+                                syncDots();
+                        };
+
+                        const normalizeEdge = () => {
+                                if (index === 0) {
+                                        snapTo(slideCount, 'auto');
+                                        return;
+                                }
+
+                                if (index === slideCount + 1) {
+                                        snapTo(1, 'auto');
+                                }
+                        };
+
+                        const stopAutoplay = () => {
+                                if (!autoplayTimer) {
+                                        return;
+                                }
+                                window.clearInterval(autoplayTimer);
+                                autoplayTimer = null;
+                        };
+
+                        const startAutoplay = () => {
+                                if (prefersReducedMotion.matches || autoplayTimer) {
+                                        return;
+                                }
+                                autoplayTimer = window.setInterval(() => {
+                                        snapTo(index + 1, 'smooth');
+                                }, 5000);
+                        };
+
+                        arrows.forEach((arrow) => {
+                                arrow.addEventListener('click', () => {
+                                        const dir = Number(arrow.dataset.dir || 0);
+                                        snapTo(index + dir, 'smooth');
+                                });
+                        });
+
+                        dots.forEach((dot) => {
+                                dot.addEventListener('click', () => {
+                                        const dotIndex = Number(dot.dataset.index || 0);
+                                        snapTo(dotIndex + 1, 'smooth');
+                                });
+                        });
+
+                        viewport.addEventListener('scroll', () => {
+                                index = Math.round(viewport.scrollLeft / slideWidth());
+                                syncDots();
+                                window.clearTimeout(settleTimer);
+                                settleTimer = window.setTimeout(normalizeEdge, 100);
+                        });
+
+                        carousel.addEventListener('mouseenter', stopAutoplay);
+                        carousel.addEventListener('mouseleave', startAutoplay);
+                        carousel.addEventListener('focusin', stopAutoplay);
+                        carousel.addEventListener('focusout', (event) => {
+                                if (!carousel.contains(event.relatedTarget)) {
+                                        startAutoplay();
+                                }
+                        });
+
+                        document.addEventListener('visibilitychange', () => {
+                                if (document.hidden) {
+                                        stopAutoplay();
+                                        return;
+                                }
+                                startAutoplay();
+                        });
+
+                        window.addEventListener('resize', () => {
+                                snapTo(index, 'auto');
+                        });
+
+                        snapTo(1, 'auto');
+                        startAutoplay();
+                }
+        })();
+</script>

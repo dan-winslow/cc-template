@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="900" viewBox="0 0 700 900" role="img" aria-labelledby="title desc">
+  <title id="title">Headliner Weekend Poster</title>
+  <desc id="desc">Classic demo event poster for Headliner Weekend.</desc>
+  <rect width="700" height="900" fill="#100a12"/>
+  <rect x="54" y="54" width="592" height="792" fill="#211025" stroke="#ff4d8a" stroke-width="2"/>
+  <text x="90" y="146" fill="#ff7cb0" font-family="Arial Black, Arial" font-size="42">WEEKEND SPECIAL</text>
+  <text x="90" y="306" fill="#f8efff" font-family="Arial Black, Arial" font-size="78">JOEY</text>
+  <text x="90" y="380" fill="#f8efff" font-family="Arial Black, Arial" font-size="78">ALTON</text>
+  <text x="90" y="456" fill="#ffd6ea" font-family="Arial, sans-serif" font-size="32">HEADLINER WEEKEND</text>
+  <text x="90" y="514" fill="#f8efff" font-family="Arial, sans-serif" font-size="30">JULY 17 • 8:30 PM</text>
+  <rect x="90" y="604" width="332" height="80" fill="#ff4d8a"/>
+  <text x="256" y="657" fill="#160e14" font-family="Arial Black, Arial" font-size="38" text-anchor="middle">BUY TICKETS</text>
+</svg>

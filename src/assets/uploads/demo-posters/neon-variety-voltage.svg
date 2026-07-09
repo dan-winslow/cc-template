@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="900" viewBox="0 0 700 900" role="img" aria-labelledby="title desc">
+  <title id="title">Variety Voltage Poster</title>
+  <desc id="desc">Neon demo event poster for Variety Voltage.</desc>
+  <rect width="700" height="900" fill="#071421"/>
+  <rect x="0" y="0" width="700" height="160" fill="#0f2f4a"/>
+  <g fill="none" stroke="#27d3ff" stroke-opacity="0.45" stroke-width="2">
+    <path d="M40 220h620"/>
+    <path d="M40 310h620"/>
+    <path d="M40 400h620"/>
+  </g>
+  <text x="54" y="105" fill="#65ecff" font-family="Arial Black, Arial" font-size="42">VARIETY NIGHT</text>
+  <text x="54" y="286" fill="#e4fbff" font-family="Arial Black, Arial" font-size="78">VOLTAGE</text>
+  <text x="54" y="360" fill="#e4fbff" font-family="Arial Black, Arial" font-size="78">SHOWCASE</text>
+  <text x="54" y="440" fill="#88ffe4" font-family="Arial, sans-serif" font-size="34">HOSTED BY JUNE PARK</text>
+  <text x="54" y="500" fill="#e4fbff" font-family="Arial, sans-serif" font-size="30">JULY 19 • 7:30 PM</text>
+  <rect x="54" y="590" width="342" height="80" fill="#27d3ff"/>
+  <text x="225" y="643" fill="#06131f" font-family="Arial Black, Arial" font-size="38" text-anchor="middle">BUY TICKETS</text>
+</svg>

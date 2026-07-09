@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700" role="img" aria-labelledby="title desc">
+  <title id="title">Ria Santos headshot card</title>
+  <desc id="desc">Stylized neon theme headshot card for Ria Santos.</desc>
+  <rect width="900" height="700" fill="#071427"/>
+  <circle cx="450" cy="300" r="176" fill="#0d4162"/>
+  <circle cx="450" cy="286" r="88" fill="#ffd0b3"/>
+  <path d="M360 252c30-40 150-40 180 0" fill="#0a2436"/>
+  <rect x="334" y="388" width="232" height="172" rx="104" fill="#0b2a40"/>
+  <text x="60" y="610" fill="#b6f5ff" font-family="Arial Black, Arial" font-size="58">RIA SANTOS</text>
+</svg>

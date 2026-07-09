@@ -1,0 +1,30 @@
+---
+layout: layouts/base.njk
+title: Upcoming Comedians
+permalink: /demos/neon/comedians/index.html
+---
+
+<section class="page-head">
+    <h1>Upcoming Comedians</h1>
+    <p>Give every performer a quick spotlight and ticket-driving context.</p>
+</section>
+{% set navBase = basePath or '' %}
+<section class="cards two-up">
+    {% for comic in comedians.items %}
+        {% set comicSlug = (comic.slug or comic.name) | slugify %}
+        <a class="card performer performer-link"
+           href="{{ navBase }}/comedians/{{ comicSlug }}/">
+            <img class="performer-image"
+                 src="{{ comic.image or ('https://picsum.photos/seed/' ~ (comic.name | slugify) ~ '/900/700') }}"
+                 alt="Portrait of {{ comic.name }}"
+                 loading="lazy" />
+            <div class="performer-content">
+                <p class="eyebrow">{{ comic.date | readableDate }}</p>
+                <h2>{{ comic.name }}</h2>
+                <p>{{ comic.blurb }}</p>
+                <p class="muted">Known for: {{ comic.credits }}</p>
+                <p class="price">{{ comic.showType }}</p>
+            </div>
+        </a>
+    {% endfor %}
+</section>

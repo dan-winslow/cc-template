@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="900" viewBox="0 0 700 900" role="img" aria-labelledby="title desc">
+  <title id="title">New England Showcase Poster</title>
+  <desc id="desc">Classic demo event poster for New England Showcase.</desc>
+  <rect width="700" height="900" fill="#120b13"/>
+  <path d="M0 180 L700 0 L700 220 L0 400 Z" fill="#2f0f22"/>
+  <path d="M0 410 L700 230 L700 450 L0 630 Z" fill="#4d1332"/>
+  <text x="58" y="120" fill="#ff88b7" font-family="Arial Black, Arial" font-size="40">SHOWCASE NIGHT</text>
+  <text x="58" y="292" fill="#f8efff" font-family="Arial Black, Arial" font-size="70">NEW ENGLAND</text>
+  <text x="58" y="364" fill="#f8efff" font-family="Arial Black, Arial" font-size="70">SHOWCASE</text>
+  <text x="58" y="445" fill="#ffd4e8" font-family="Arial, sans-serif" font-size="34">HOSTED BY ARI PIKE</text>
+  <text x="58" y="505" fill="#f8efff" font-family="Arial, sans-serif" font-size="30">JULY 16 • 7:30 PM</text>
+  <rect x="58" y="596" width="336" height="80" fill="#ff4d8a"/>
+  <text x="226" y="649" fill="#180f17" font-family="Arial Black, Arial" font-size="38" text-anchor="middle">BUY TICKETS</text>
+</svg>

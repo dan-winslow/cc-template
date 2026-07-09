@@ -1,0 +1,25 @@
+{
+  "name": "cc_template",
+  "version": "1.0.0",
+  "description": "Comedy club website template with CMS-ready content",
+  "main": ".eleventy.js",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "rm -rf _site",
+    "build:demos": "eleventy --pathprefix=/",
+    "sanity:dev": "cd sanity && sanity dev",
+    "sanity:deploy": "cd sanity && sanity deploy",
+    "sync:sanity": "node scripts/sync-sanity.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "@sanity/client": "^7.23.0",
+    "luxon": "^3.7.2",
+    "sanity": "^6.3.0"
+  }
+}

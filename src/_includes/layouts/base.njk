@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{{ title or site.clubName }}</title>
+        <meta name="description" content="{{ site.tagline }}" />
+        {% set theme = site.theme or {} %}
+        <style>
+            :root {
+                --bg-1: {{ theme.bg1 or '#fff7eb' }};
+                --bg-2: {{ theme.bg2 or '#ffd7a9' }};
+                --ink: {{ theme.ink or '#1a130f' }};
+                --accent: {{ theme.accent or '#ef6a37' }};
+                --accent-dark: {{ theme.accentDark or '#bf461c' }};
+                --panel: {{ theme.panel or 'rgba(255, 245, 232, 0.92)' }};
+                --line: {{ theme.line or 'rgba(26, 19, 15, 0.16)' }};
+            }
+        </style>
+        <link rel="stylesheet" href="/styles/site.css" />
+    </head>
+    <body class="{{ pageClass or '' }}">
+        {% set navBase = basePath or '' %}
+        {% set locations = site.locations or [] %}
+        {% set hasMultiLocation = locations.length > 1 %}
+        {% set fallbackLocation = site.defaultLocation or (locations[0].slug if locations.length else '') %}
+        <div class="grain"></div>
+        <header class="site-header">
+            <a class="brand" href="{{ navBase }}/">{{ site.clubName }}</a>
+            <div class="header-controls">
+                <nav class="site-nav">
+                    <a href="{{ navBase }}/">Home</a>
+                    <a href="{{ navBase }}/schedule/">Show Schedule</a>
+                    <a href="{{ navBase }}/comedians/">Comedians</a>
+                    {% if site.features.menuEnabled %}
+                        <a href="{{ navBase }}/menu/">Food + Drink</a>
+                    {% endif %}
+                    <a href="{{ navBase }}/book/">Book an Event</a>
+                </nav>
+                {% if hasMultiLocation %}
+                    <label class="location-switcher" for="header-location-switcher">
+                        <span>Location</span>
+                        <select id="header-location-switcher"
+                                data-location-picker
+                                aria-label="Choose location">
+                            {% for location in locations %}
+                                <option value="{{ location.slug }}" data-location-name="{{ location.name }}">{{ location.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+                {% endif %}
+            </div>
+        </header>
+        <main>
+            {{ content | safe }}
+        </main>
+        <footer class="site-footer">
+            {% if hasMultiLocation %}
+                <div class="footer-location-controls">
+                    <label class="location-switcher" for="footer-location-switcher">
+                        <span>Location</span>
+                        <select id="footer-location-switcher"
+                                data-location-picker
+                                aria-label="Choose location">
+                            {% for location in locations %}
+                                <option value="{{ location.slug }}" data-location-name="{{ location.name }}">{{ location.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+                </div>
+                <div class="footer-location-list">
+                    {% for location in locations %}
+                        <div class="footer-location-item"
+                             data-location-contact="{{ location.slug }}">
+                            <p>
+                                {{ site.clubName }} - {{ location.name }}
+                                {% if location.address %}| {{ location.address }}{% endif %}
+                                {% if location.phone %}| {{ location.phone }}{% endif %}
+                            </p>
+                            {% if location.email %}
+                                <p>
+                                    <a href="mailto:{{ location.email }}">{{ location.email }}</a>
+                                </p>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>{{ site.clubName }} | {{ site.address }} | {{ site.phone }}</p>
+                <p>
+                    <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+                </p>
+            {% endif %}
+        </footer>
+        {% if hasMultiLocation %}
+            <script>
+                (() => {
+                    const locationKey = 'activeClubLocation';
+                    const defaultLocation = '{{ fallbackLocation }}';
+                    const searchParams = new URLSearchParams(window.location.search);
+                    const paramLocation = searchParams.get('location');
+                    const pickers = Array.from(document.querySelectorAll('[data-location-picker]'));
+                    const options = pickers[0] ? Array.from(pickers[0].options).map((option) => option.value) : [];
+                    const fallback = options.includes(defaultLocation) ? defaultLocation : (options[0] || '');
+                    const saved = window.localStorage.getItem(locationKey);
+
+                    const normalizeLocation = (value) => {
+                        if (!value || !options.includes(value)) {
+                            return fallback;
+                        }
+                        return value;
+                    };
+
+                    let activeLocation = normalizeLocation(paramLocation || saved || fallback);
+
+                    const setQueryLocation = (location) => {
+                        const next = new URL(window.location.href);
+                        next.searchParams.set('location', location);
+                        window.history.replaceState({}, '', next);
+                    };
+
+                    const syncPickers = () => {
+                        pickers.forEach((picker) => {
+                            picker.value = activeLocation;
+                        });
+                    };
+
+                    const syncLocationNames = () => {
+                        const sourcePicker = pickers[0];
+                        if (!sourcePicker) {
+                            return;
+                        }
+                        const selected = sourcePicker.options[sourcePicker.selectedIndex];
+                        const locationName = selected ? selected.textContent : '';
+                        const targets = Array.from(document.querySelectorAll('[data-active-location-name]'));
+                        targets.forEach((target) => {
+                            target.textContent = locationName;
+                        });
+                    };
+
+                    const syncContacts = () => {
+                        const contacts = Array.from(document.querySelectorAll('[data-location-contact]'));
+                        contacts.forEach((item) => {
+                            const locationSlug = item.getAttribute('data-location-contact');
+                            item.hidden = locationSlug !== activeLocation;
+                        });
+                    };
+
+                    const syncLocationItems = () => {
+                        const items = Array.from(document.querySelectorAll('[data-location-item]'));
+                        items.forEach((item) => {
+                            const locationSlug = item.getAttribute('data-location-item') || '';
+                            const visible = !locationSlug || locationSlug === activeLocation;
+                            item.hidden = !visible;
+                        });
+
+                        const emptyStates = Array.from(document.querySelectorAll('[data-location-empty]'));
+                        emptyStates.forEach((message) => {
+                            const target = message.getAttribute('data-location-empty');
+                            if (!target) {
+                                return;
+                            }
+                            const selector = `[data-location-group="${target}"] [data-location-item]:not([hidden])`;
+                            const hasVisibleItems = document.querySelector(selector);
+                            message.hidden = Boolean(hasVisibleItems);
+                        });
+
+                        const monthSections = Array.from(document.querySelectorAll('[data-location-month]'));
+                        monthSections.forEach((month) => {
+                            const hasVisibleItems = month.querySelector('[data-location-item]:not([hidden])');
+                            month.hidden = !hasVisibleItems;
+                        });
+
+                        const calendarDays = Array.from(document.querySelectorAll('[data-location-day]'));
+                        calendarDays.forEach((day) => {
+                            const hasVisibleEvents = day.querySelector('[data-location-item]:not([hidden])');
+                            const emptyMessage = day.querySelector('.calendar-empty');
+                            if (emptyMessage) {
+                                emptyMessage.hidden = Boolean(hasVisibleEvents);
+                            }
+                        });
+                    };
+
+                    const updateInternalLinks = () => {
+                        const links = Array.from(document.querySelectorAll('a[href]'));
+                        links.forEach((link) => {
+                            const href = link.getAttribute('href') || '';
+                            if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) {
+                                return;
+                            }
+                            let parsed;
+                            try {
+                                parsed = new URL(href, window.location.origin);
+                            } catch (_error) {
+                                return;
+                            }
+                            if (parsed.origin !== window.location.origin) {
+                                return;
+                            }
+                            parsed.searchParams.set('location', activeLocation);
+                            const nextHref = `${parsed.pathname}${parsed.search}${parsed.hash}`;
+                            link.setAttribute('href', nextHref);
+                        });
+                    };
+
+                    const applyLocation = (location) => {
+                        activeLocation = normalizeLocation(location);
+                        window.localStorage.setItem(locationKey, activeLocation);
+                        syncPickers();
+                        syncLocationNames();
+                        syncContacts();
+                        syncLocationItems();
+                        updateInternalLinks();
+                        setQueryLocation(activeLocation);
+                    };
+
+                    pickers.forEach((picker) => {
+                        picker.addEventListener('change', (event) => {
+                            applyLocation(event.target.value);
+                        });
+                    });
+
+                    applyLocation(activeLocation);
+                })();
+            </script>
+        {% endif %}
+    </body>
+</html>

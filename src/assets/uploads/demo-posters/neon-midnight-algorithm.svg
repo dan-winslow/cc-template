@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="900" viewBox="0 0 700 900" role="img" aria-labelledby="title desc">
+  <title id="title">Midnight Algorithm Poster</title>
+  <desc id="desc">Neon demo event poster for Midnight Algorithm.</desc>
+  <rect width="700" height="900" fill="#06121d"/>
+  <g stroke="#1fd3ff" stroke-opacity="0.45">
+    <path d="M0 190h700"/>
+    <path d="M0 290h700"/>
+    <path d="M0 390h700"/>
+    <path d="M0 490h700"/>
+  </g>
+  <text x="56" y="130" fill="#65ecff" font-family="Arial Black, Arial" font-size="40">LATE SHOW</text>
+  <text x="56" y="294" fill="#e3fbff" font-family="Arial Black, Arial" font-size="74">MIDNIGHT</text>
+  <text x="56" y="364" fill="#e3fbff" font-family="Arial Black, Arial" font-size="74">ALGORITHM</text>
+  <text x="56" y="444" fill="#8cffe4" font-family="Arial, sans-serif" font-size="34">MILO TAN</text>
+  <text x="56" y="504" fill="#e3fbff" font-family="Arial, sans-serif" font-size="30">JULY 13 • 10:00 PM</text>
+  <rect x="56" y="594" width="340" height="80" fill="#27d3ff"/>
+  <text x="226" y="647" fill="#06131d" font-family="Arial Black, Arial" font-size="38" text-anchor="middle">BUY TICKETS</text>
+</svg>

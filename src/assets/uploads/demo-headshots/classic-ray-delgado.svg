@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700" role="img" aria-labelledby="title desc">
+  <title id="title">Ray Delgado headshot card</title>
+  <desc id="desc">Stylized classic theme headshot card for Ray Delgado.</desc>
+  <rect width="900" height="700" fill="#1b0d16"/>
+  <circle cx="450" cy="300" r="170" fill="#4f1730"/>
+  <circle cx="450" cy="285" r="86" fill="#f0c0aa"/>
+  <rect x="344" y="378" width="212" height="170" rx="104" fill="#2f1020"/>
+  <text x="60" y="610" fill="#ffd7e9" font-family="Arial Black, Arial" font-size="58">RAY DELGADO</text>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="900" viewBox="0 0 700 900" role="img" aria-labelledby="title desc">
+  <title id="title">Neon Open Circuit Poster</title>
+  <desc id="desc">Neon demo event poster for Neon Open Circuit.</desc>
+  <rect width="700" height="900" fill="#071225"/>
+  <path d="M0 130 L700 20 L700 190 L0 300 Z" fill="#123557"/>
+  <text x="64" y="120" fill="#62e9ff" font-family="Arial Black, Arial" font-size="44">SPECIAL EVENT</text>
+  <text x="64" y="295" fill="#dcfbff" font-family="Arial Black, Arial" font-size="80">OPEN</text>
+  <text x="64" y="370" fill="#dcfbff" font-family="Arial Black, Arial" font-size="80">CIRCUIT</text>
+  <text x="64" y="446" fill="#78ffe0" font-family="Arial, sans-serif" font-size="34">RIA SANTOS</text>
+  <text x="64" y="506" fill="#dcfbff" font-family="Arial, sans-serif" font-size="30">JULY 12 • 9:00 PM</text>
+  <rect x="64" y="596" width="330" height="80" fill="#27d3ff"/>
+  <text x="229" y="649" fill="#06121c" font-family="Arial Black, Arial" font-size="38" text-anchor="middle">BUY TICKETS</text>
+</svg>

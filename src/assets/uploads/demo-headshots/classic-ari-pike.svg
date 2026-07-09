@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700" role="img" aria-labelledby="title desc">
+  <title id="title">Ari Pike headshot card</title>
+  <desc id="desc">Stylized classic theme headshot card for Ari Pike.</desc>
+  <rect width="900" height="700" fill="#180d15"/>
+  <path d="M0 140l900-120v210L0 360z" fill="#45162f"/>
+  <circle cx="450" cy="286" r="88" fill="#efbea4"/>
+  <path d="M362 250c40-36 136-36 176 0" fill="#2d1220"/>
+  <rect x="340" y="386" width="220" height="172" rx="102" fill="#321124"/>
+  <text x="60" y="610" fill="#ffdaed" font-family="Arial Black, Arial" font-size="58">ARI PIKE</text>
+</svg>

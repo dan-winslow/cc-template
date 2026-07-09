@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="900" viewBox="0 0 700 900" role="img" aria-labelledby="title desc">
+  <title id="title">Late Night Roast Poster</title>
+  <desc id="desc">Classic demo event poster for Late Night Roast.</desc>
+  <rect width="700" height="900" fill="#170d16"/>
+  <rect x="0" y="0" width="700" height="170" fill="#8b123f"/>
+  <text x="64" y="108" fill="#ffd2e6" font-family="Arial Black, Arial" font-size="58">LATE NIGHT ROAST</text>
+  <circle cx="542" cy="585" r="210" fill="#371028"/>
+  <circle cx="542" cy="585" r="158" fill="#5e1535"/>
+  <text x="66" y="320" fill="#f7ecff" font-family="Arial Black, Arial" font-size="76">NIA</text>
+  <text x="66" y="390" fill="#f7ecff" font-family="Arial Black, Arial" font-size="76">HOLMES</text>
+  <text x="66" y="460" fill="#ff8ab8" font-family="Arial, sans-serif" font-size="34">with TOMMY VEE</text>
+  <text x="66" y="520" fill="#f7ecff" font-family="Arial, sans-serif" font-size="30">JULY 11 • 9:30 PM</text>
+  <rect x="66" y="610" width="340" height="80" fill="#ff4d8a"/>
+  <text x="236" y="663" fill="#170d16" font-family="Arial Black, Arial" font-size="38" text-anchor="middle">BUY TICKETS</text>
+</svg>

@@ -1,0 +1,195 @@
+---
+layout: layouts/base.njk
+title: Show Schedule
+permalink: /schedule/index.html
+---
+
+<section class="page-head">
+    <h1>Show Schedule</h1>
+    <p>Update this page from your CMS to keep regulars and first-timers in the loop.</p>
+</section>
+{% if site.ticketing and site.ticketing.enabled %}
+    <section class="panel ticketing-panel">
+        <h2>Buy Tickets</h2>
+        <p>Integrated with {{ site.ticketing.platformName or 'your ticketing platform' }} for direct checkout.</p>
+        {% if site.ticketing.eventsPageUrl %}
+            <a class="button"
+               href="{{ site.ticketing.eventsPageUrl }}"
+               target="_blank"
+               rel="noopener noreferrer">Open Ticketing Platform</a>
+        {% endif %}
+        {% if site.ticketing.embedUrl %}
+            <div class="ticket-embed">
+                <iframe src="{{ site.ticketing.embedUrl }}"
+                        title="Ticketing widget"
+                        loading="lazy"></iframe>
+            </div>
+        {% endif %}
+    </section>
+{% endif %}
+{% set calendar = shows.items | toCalendar %}
+{% if calendar.length %}
+    {% for month in calendar %}
+        <section class="panel calendar-wrap" data-location-month>
+            <h2>{{ month.title }}</h2>
+            <div class="calendar-grid"
+                 role="table"
+                 aria-label="{{ month.title }} show calendar">
+                <div class="calendar-head" role="rowgroup">
+                    <span>Sun</span>
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+                </div>
+                <div class="calendar-body" role="rowgroup">
+                    {% for week in month.weeks %}
+                        {% for day in week %}
+                            {% if day %}
+                                <article class="calendar-cell" role="cell" data-location-day>
+                                    <p class="calendar-day">{{ day.day }}</p>
+                                    {% if day.shows.length %}
+                                        <ul class="calendar-events">
+                                            {% for show in day.shows %}
+                                                <li data-location-item="{{ show.locationSlug or '' }}">
+                                                    <strong>{{ show.time | readableTime }}</strong>
+                                                    {% if show.ticketUrl %}
+                                                        <a href="{{ show.ticketUrl }}" target="_blank" rel="noopener noreferrer">{{ show.title }}</a>
+                                                    {% else %}
+                                                        <span>{{ show.title }}</span>
+                                                    {% endif %}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                    <p class="muted calendar-empty"
+                                       {% if day.shows.length %} hidden{% endif %}>No show</p>
+                                </article>
+                            {% else %}
+                                <article class="calendar-cell empty" aria-hidden="true"></article>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {% endfor %}
+{% endif %}
+<section class="cards three-up" data-location-group="schedule-cards">
+    {% for show in shows.items %}
+        <article class="card" data-location-item="{{ show.locationSlug or '' }}">
+            {% if show.image %}
+                <button class="poster-trigger"
+                        type="button"
+                        data-poster-trigger
+                        data-poster-src="{{ show.image }}"
+                        data-poster-alt="Poster for {{ show.title }}"
+                        data-poster-title="{{ show.title }}">
+                    <img class="event-image"
+                         src="{{ show.image }}"
+                         alt="Poster for {{ show.title }}"
+                         width="700"
+                         height="900"
+                         loading="lazy" />
+                </button>
+            {% endif %}
+            <p class="eyebrow">{{ show.date | readableDate }}</p>
+            <h2>{{ show.title }}</h2>
+            <p><strong>{{ show.time | readableTime }}</strong> | Hosted by {{ show.host }}</p>
+            <p>Headliner: {{ show.headliner }}</p>
+            <p class="muted">{{ show.notes }}</p>
+            <p class="price">Tickets {{ show.ticketPrice }}</p>
+            {% if show.ticketUrl %}
+                <a class="button ticket-button"
+                   href="{{ show.ticketUrl }}"
+                   target="_blank"
+                   rel="noopener noreferrer">Buy Tickets</a>
+            {% endif %}
+        </article>
+    {% endfor %}
+</section>
+<p class="muted" data-location-empty="schedule-cards" hidden>No scheduled shows are currently listed for this location.</p>
+<div class="poster-lightbox" data-poster-lightbox hidden>
+    <div class="poster-lightbox-dialog"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="poster-lightbox-title">
+        <button class="poster-lightbox-close"
+                type="button"
+                aria-label="Close poster viewer"
+                data-poster-close>Close</button>
+        <img class="poster-lightbox-image"
+             id="poster-lightbox-image"
+             src=""
+             alt=""
+             width="700"
+             height="900"
+             loading="eager" />
+        <p class="poster-lightbox-title" id="poster-lightbox-title"></p>
+    </div>
+</div>
+<script>
+    (() => {
+        const lightbox = document.querySelector('[data-poster-lightbox]');
+        if (!lightbox) {
+            return;
+        }
+
+        const dialog = lightbox.querySelector('.poster-lightbox-dialog');
+        const image = lightbox.querySelector('#poster-lightbox-image');
+        const title = lightbox.querySelector('#poster-lightbox-title');
+        const closeButton = lightbox.querySelector('[data-poster-close]');
+        const triggers = Array.from(document.querySelectorAll('[data-poster-trigger]'));
+        let activeTrigger = null;
+
+        const closeLightbox = () => {
+            lightbox.hidden = true;
+            document.body.classList.remove('modal-open');
+            image.setAttribute('src', '');
+            image.setAttribute('alt', '');
+            title.textContent = '';
+            if (activeTrigger) {
+                activeTrigger.focus();
+                activeTrigger = null;
+            }
+        };
+
+        const openLightbox = (trigger) => {
+            const src = trigger.getAttribute('data-poster-src') || '';
+            if (!src) {
+                return;
+            }
+            const alt = trigger.getAttribute('data-poster-alt') || 'Show poster';
+            const headline = trigger.getAttribute('data-poster-title') || '';
+
+            activeTrigger = trigger;
+            image.setAttribute('src', src);
+            image.setAttribute('alt', alt);
+            title.textContent = headline;
+            lightbox.hidden = false;
+            document.body.classList.add('modal-open');
+            closeButton.focus();
+        };
+
+        triggers.forEach((trigger) => {
+            trigger.addEventListener('click', () => {
+                openLightbox(trigger);
+            });
+        });
+
+        closeButton.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (event) => {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !lightbox.hidden) {
+                closeLightbox();
+            }
+        });
+    })();
+</script>

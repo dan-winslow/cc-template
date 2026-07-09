@@ -1,0 +1,169 @@
+{
+  "basePath": "/demos/classic",
+  "pageClass": "demo-shell demo-classic",
+  "site": {
+    "clubName": "Brickhouse Comedy Cellar",
+    "tagline": "Old-school room. New-school killers.",
+    "description": "A brick-walled basement room with national headliners, surprise drop-ins, and intimate late-night sets.",
+    "promoCopy": "Friday and Saturday sell out fast. Reserve before 5 PM for premium seating.",
+    "city": "Boston",
+    "doorsOpen": "7:00 PM",
+    "address": "88 Hanover St, Boston, MA",
+    "phone": "(617) 555-0104",
+    "email": "events@brickhousecomedy.com",
+    "ticketing": {
+      "enabled": true,
+      "platformName": "Tixr",
+      "eventsPageUrl": "https://www.tixr.com/groups/brickhouse-comedy",
+      "embedUrl": ""
+    },
+    "features": {
+      "menuEnabled": true
+    },
+    "theme": {
+      "bg1": "#0e0e12",
+      "bg2": "#1c1421",
+      "ink": "#f4f1ff",
+      "accent": "#ff4d8a",
+      "accentDark": "#b0124e",
+      "panel": "rgba(22, 16, 30, 0.86)",
+      "line": "rgba(255, 77, 138, 0.34)"
+    }
+  },
+  "shows": {
+    "items": [
+      {
+        "date": "2026-07-10",
+        "time": "20:00",
+        "title": "Cellar Fridays",
+        "host": "Margo Bell",
+        "headliner": "Ray Delgado",
+        "image": "/assets/uploads/demo-posters/classic-cellar-fridays.svg",
+        "notes": "Classic club set with local feature act.",
+        "ticketPrice": "$30",
+        "ticketUrl": "https://www.tixr.com/groups/brickhouse-comedy/events/cellar-fridays-100101"
+      },
+      {
+        "date": "2026-07-11",
+        "time": "21:30",
+        "title": "Late Night Roast",
+        "host": "Tommy Vee",
+        "headliner": "Nia Holmes",
+        "image": "/assets/uploads/demo-posters/classic-late-night-roast.svg",
+        "notes": "Audience-driven roast format.",
+        "ticketPrice": "$34",
+        "ticketUrl": "https://www.tixr.com/groups/brickhouse-comedy/events/late-night-roast-100102"
+      },
+      {
+        "date": "2026-07-16",
+        "time": "19:30",
+        "title": "New England Showcase",
+        "host": "Ari Pike",
+        "headliner": "Ensemble",
+        "image": "/assets/uploads/demo-posters/classic-new-england-showcase.svg",
+        "notes": "Regional favorites and touring guests.",
+        "ticketPrice": "$22",
+        "ticketUrl": "https://www.tixr.com/groups/brickhouse-comedy/events/new-england-showcase-100103"
+      },
+      {
+        "date": "2026-07-17",
+        "time": "20:30",
+        "title": "Headliner Weekend",
+        "host": "Margo Bell",
+        "headliner": "Joey Alton",
+        "image": "/assets/uploads/demo-posters/classic-headliner-weekend.svg",
+        "notes": "Two shows nightly.",
+        "ticketPrice": "$36",
+        "ticketUrl": "https://www.tixr.com/groups/brickhouse-comedy/events/headliner-weekend-100104"
+      }
+    ]
+  },
+  "comedians": {
+    "items": [
+      {
+        "name": "Ray Delgado",
+        "date": "2026-07-10",
+        "blurb": "Dry storytelling with old-Boston pacing.",
+        "image": "/assets/uploads/demo-headshots/classic-ray-delgado.svg",
+        "bio": "Ray Delgado sharpened his style in packed East Coast rooms and built a reputation for patient storytelling with explosive punchlines. His hour blends neighborhood characters, family dynamics, and the awkward elegance of getting older in public.",
+        "credits": "Late Show, Dry Bar",
+        "showType": "Headliner"
+      },
+      {
+        "name": "Nia Holmes",
+        "date": "2026-07-11",
+        "blurb": "Tight punchlines and fearless crowd pivots.",
+        "image": "/assets/uploads/demo-headshots/classic-nia-holmes.svg",
+        "bio": "Nia Holmes is known for precise writing and crowd interaction that never feels scripted. She has performed internationally, developing a voice that moves between sharp personal material and observational set pieces that land in any city.",
+        "credits": "Hulu Comedy",
+        "showType": "Headliner"
+      },
+      {
+        "name": "Ari Pike",
+        "date": "2026-07-16",
+        "blurb": "Quick-fire one-liners with absurd callbacks.",
+        "image": "/assets/uploads/demo-headshots/classic-ari-pike.svg",
+        "bio": "Ari Pike built a cult following through rapid-fire sets packed with layered callbacks and absurd detours. Offstage, Ari produces monthly development nights focused on helping emerging comics shape polished 10-minute sets.",
+        "credits": "The Stand",
+        "showType": "Host"
+      },
+      {
+        "name": "Joey Alton",
+        "date": "2026-07-17",
+        "blurb": "Blue-collar observational comedy with heart.",
+        "image": "/assets/uploads/demo-headshots/classic-joey-alton.svg",
+        "bio": "Joey Alton's voice combines working-class storytelling with warm, self-aware misdirection. His recent touring material centers on parenting, gig culture, and the comedy hidden inside ordinary jobs.",
+        "credits": "Comedy Cellar",
+        "showType": "Weekend Special"
+      }
+    ]
+  },
+  "menu": {
+    "food": [
+      {
+        "name": "Cellar Pretzel Bites",
+        "description": "Warm salted pretzels, mustard trio.",
+        "price": "$10"
+      },
+      {
+        "name": "Back Brick Wings",
+        "description": "Buffalo glaze, charred lemon.",
+        "price": "$15"
+      }
+    ],
+    "drinks": [
+      {
+        "name": "Brickhouse Manhattan",
+        "description": "Rye, sweet vermouth, bitters.",
+        "price": "$15"
+      },
+      {
+        "name": "Basement Spritz",
+        "description": "Aperitivo, soda, blood orange.",
+        "price": "$13"
+      }
+    ]
+  },
+  "booking": {
+    "packages": [
+      {
+        "name": "VIP Basement Buyout",
+        "description": "Private room with hosted lineup and photo wall.",
+        "startingPrice": "$3,200",
+        "capacity": "Up to 100 guests"
+      },
+      {
+        "name": "Team Night Package",
+        "description": "Reserved seating blocks with optional post-show meet-and-greet.",
+        "startingPrice": "$2,100",
+        "capacity": "Up to 80 guests"
+      },
+      {
+        "name": "Fundraiser Friday",
+        "description": "Custom ticket tiers and charity callouts from stage.",
+        "startingPrice": "$2,600",
+        "capacity": "Up to 120 guests"
+      }
+    ]
+  }
+}

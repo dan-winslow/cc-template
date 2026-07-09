@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700" role="img" aria-labelledby="title desc">
+  <title id="title">Nia Holmes headshot card</title>
+  <desc id="desc">Stylized classic theme headshot card for Nia Holmes.</desc>
+  <rect width="900" height="700" fill="#160b14"/>
+  <rect x="130" y="90" width="640" height="520" fill="#3b1330" opacity="0.9"/>
+  <circle cx="450" cy="285" r="88" fill="#f2c6b2"/>
+  <path d="M350 262c18-58 132-58 150 0" fill="#2b1020"/>
+  <rect x="338" y="382" width="224" height="176" rx="102" fill="#2b1020"/>
+  <text x="60" y="610" fill="#ffd9eb" font-family="Arial Black, Arial" font-size="58">NIA HOLMES</text>
+</svg>

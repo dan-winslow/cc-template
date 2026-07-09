@@ -1,0 +1,147 @@
+{
+  "basePath": "/demos/neon",
+  "pageClass": "demo-shell demo-neon",
+  "site": {
+    "clubName": "Voltage Laugh Lab",
+    "tagline": "Future-facing comedy in full color.",
+    "description": "An immersive black-box comedy venue with projection art, midnight sets, and crossover variety nights.",
+    "promoCopy": "Join text alerts for surprise sets and same-day flash tickets.",
+    "city": "Austin",
+    "doorsOpen": "8:00 PM",
+    "address": "402 Red River St, Austin, TX",
+    "phone": "(512) 555-0120",
+    "email": "booking@voltagelaughlab.com",
+    "ticketing": {
+      "enabled": true,
+      "platformName": "Universe",
+      "eventsPageUrl": "https://www.universe.com/@voltage-laugh-lab",
+      "embedUrl": ""
+    },
+    "features": {
+      "menuEnabled": false
+    },
+    "theme": {
+      "bg1": "#070b14",
+      "bg2": "#101826",
+      "ink": "#e8f6ff",
+      "accent": "#27d3ff",
+      "accentDark": "#1392bc",
+      "panel": "rgba(8, 19, 34, 0.84)",
+      "line": "rgba(39, 211, 255, 0.35)"
+    }
+  },
+  "shows": {
+    "items": [
+      {
+        "date": "2026-07-12",
+        "time": "21:00",
+        "title": "Neon Open Circuit",
+        "host": "Kris Vale",
+        "headliner": "Ria Santos",
+        "image": "/assets/uploads/demo-posters/neon-open-circuit.svg",
+        "notes": "Visual projection-backed stand-up showcase.",
+        "ticketPrice": "$24",
+        "ticketUrl": "https://www.universe.com/events/neon-open-circuit-100201"
+      },
+      {
+        "date": "2026-07-13",
+        "time": "22:00",
+        "title": "Midnight Algorithm",
+        "host": "Dev Monroe",
+        "headliner": "Milo Tan",
+        "image": "/assets/uploads/demo-posters/neon-midnight-algorithm.svg",
+        "notes": "Tech and internet culture comedy night.",
+        "ticketPrice": "$27",
+        "ticketUrl": "https://www.universe.com/events/midnight-algorithm-100202"
+      },
+      {
+        "date": "2026-07-18",
+        "time": "20:30",
+        "title": "Future of Funny",
+        "host": "Ria Santos",
+        "headliner": "Cass Jet",
+        "image": "/assets/uploads/demo-posters/neon-future-of-funny.svg",
+        "notes": "Experimental crowd format with rotating guests.",
+        "ticketPrice": "$29",
+        "ticketUrl": "https://www.universe.com/events/future-of-funny-100203"
+      },
+      {
+        "date": "2026-07-19",
+        "time": "19:30",
+        "title": "Variety Voltage",
+        "host": "June Park",
+        "headliner": "Ensemble",
+        "image": "/assets/uploads/demo-posters/neon-variety-voltage.svg",
+        "notes": "Stand-up, characters, and musical bits.",
+        "ticketPrice": "$20",
+        "ticketUrl": "https://www.universe.com/events/variety-voltage-100204"
+      }
+    ]
+  },
+  "comedians": {
+    "items": [
+      {
+        "name": "Ria Santos",
+        "date": "2026-07-12",
+        "blurb": "Clean setups with explosive left-turn punchlines.",
+        "image": "/assets/uploads/demo-headshots/neon-ria-santos.svg",
+        "bio": "Ria Santos blends razor-clean setups with high-contrast punchlines that snap into unexpected angles. Her recent material explores startup life, identity, and the gap between personal branding and real life.",
+        "credits": "SXSW Comedy",
+        "showType": "Headliner"
+      },
+      {
+        "name": "Milo Tan",
+        "date": "2026-07-13",
+        "blurb": "Dry futurist bits and deadpan social commentary.",
+        "image": "/assets/uploads/demo-headshots/neon-milo-tan.svg",
+        "bio": "Milo Tan performs deadpan futurist comedy with tightly engineered transitions and deep callbacks. The act moves from tech satire to personal stories about ambition, burnout, and rebuilding creative momentum.",
+        "credits": "Netflix Radio",
+        "showType": "Headliner"
+      },
+      {
+        "name": "Cass Jet",
+        "date": "2026-07-18",
+        "blurb": "High-concept storytelling with performance art timing.",
+        "image": "/assets/uploads/demo-headshots/neon-cass-jet.svg",
+        "bio": "Cass Jet mixes stand-up and theatrical framing to create ambitious sets that still feel intimate. Their latest hour combines narrative comedy, physical pacing, and interactive audience moments built for experimental rooms.",
+        "credits": "Edinburgh Fringe",
+        "showType": "Special Event"
+      },
+      {
+        "name": "June Park",
+        "date": "2026-07-19",
+        "blurb": "Playful absurdism and crowd-level improvisation.",
+        "image": "/assets/uploads/demo-headshots/neon-june-park.svg",
+        "bio": "June Park's set style is playful, surreal, and deeply present, using crowd suggestions to spin entirely new riffs in real time. June has become a go-to host for hybrid stand-up and variety formats across major festival stages.",
+        "credits": "Moontower Fest",
+        "showType": "Host"
+      }
+    ]
+  },
+  "menu": {
+    "food": [],
+    "drinks": []
+  },
+  "booking": {
+    "packages": [
+      {
+        "name": "Brand Activation Night",
+        "description": "Projection mapping, branded overlays, and host segments.",
+        "startingPrice": "$4,500",
+        "capacity": "Up to 220 guests"
+      },
+      {
+        "name": "Launch Party Comedy Set",
+        "description": "Curated lineup with sponsor integration moments.",
+        "startingPrice": "$3,900",
+        "capacity": "Up to 180 guests"
+      },
+      {
+        "name": "Creator Collab Session",
+        "description": "Comedy + interview format for digital-first campaigns.",
+        "startingPrice": "$2,750",
+        "capacity": "Up to 140 guests"
+      }
+    ]
+  }
+}

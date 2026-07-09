@@ -1,0 +1,63 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: comedians.items
+  size: 1
+  alias: comic
+permalink: "/demos/classic/comedians/{{ (comic.slug or comic.name) | slugify }}/index.html"
+title: "{{ comic.name }} | Comedian"
+---
+
+{% set navBase = basePath or '' %}
+<section class="page-head">
+    <p class="eyebrow">Performer Profile</p>
+    <h1>{{ comic.name }}</h1>
+    <p>{{ comic.blurb }}</p>
+</section>
+<section class="panel split performer-detail">
+    <img class="performer-image detail"
+         src="{{ comic.image or ('https://picsum.photos/seed/' ~ (comic.name | slugify) ~ '/900/700') }}"
+         alt="Portrait of {{ comic.name }}" />
+    <div>
+        <p><strong>Appearing:</strong> {{ comic.date | readableDate }}</p>
+        <p><strong>Show Type:</strong> {{ comic.showType }}</p>
+        <p><strong>Credits:</strong> {{ comic.credits }}</p>
+        <h2>Biography</h2>
+        <p>{{ comic.bio or comic.blurb }}</p>
+        {% set comicKey = (comic.slug or comic.name) | slugify %}
+        <h2>Tickets + Show Times</h2>
+        <div class="cards two-up profile-shows">
+            {% for show in shows.items %}
+                {% set showKey = (show.headlinerSlug or show.headliner) | slugify %}
+                {% if showKey == comicKey %}
+                    <article class="card">
+                        <p class="eyebrow">{{ show.date | readableDate }}</p>
+                        <h3>{{ show.title }}</h3>
+                        <p><strong>{{ show.time | readableTime }}</strong></p>
+                        {% if show.ticketPrice %}
+                            <p class="price">Tickets {{ show.ticketPrice }}</p>
+                        {% endif %}
+                        <div class="ticket-actions">
+                            {% if show.ticketUrl %}
+                                <a class="button"
+                                   href="{{ show.ticketUrl }}"
+                                   target="_blank"
+                                   rel="noopener noreferrer">Buy Tickets</a>
+                            {% endif %}
+                            {% if comic.bioUpdateUrl %}
+                                <a class="button ghost"
+                                   href="{{ comic.bioUpdateUrl }}"
+                                   target="_blank"
+                                   rel="noopener noreferrer">Submit Bio Update</a>
+                            {% endif %}
+                        </div>
+                    </article>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% if comic.bioUpdateUrl %}
+            <p class="muted">Managers/publicists can use the bio update link to request profile changes.</p>
+        {% endif %}
+        <a class="button" href="{{ navBase }}/comedians/">Back to all comedians</a>
+    </div>
+</section>

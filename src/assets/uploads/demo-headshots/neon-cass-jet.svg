@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700" role="img" aria-labelledby="title desc">
+  <title id="title">Cass Jet headshot card</title>
+  <desc id="desc">Stylized neon theme headshot card for Cass Jet.</desc>
+  <rect width="900" height="700" fill="#071325"/>
+  <path d="M0 120l900-90v170L0 320z" fill="#0f3552"/>
+  <circle cx="450" cy="286" r="88" fill="#ffd1b6"/>
+  <path d="M358 252c34-40 150-40 184 0" fill="#0a2436"/>
+  <rect x="332" y="390" width="236" height="170" rx="104" fill="#0c2d43"/>
+  <text x="60" y="610" fill="#bcf6ff" font-family="Arial Black, Arial" font-size="58">CASS JET</text>
+</svg>

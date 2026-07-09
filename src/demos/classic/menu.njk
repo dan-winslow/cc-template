@@ -1,0 +1,47 @@
+---
+layout: layouts/base.njk
+title: Food and Drink
+permalink: /demos/classic/menu/index.html
+---
+
+{% if site.features.menuEnabled %}
+    <section class="page-head">
+        <h1>Food + Drink</h1>
+        <p>Turn this section on only if your venue serves food and drinks.</p>
+    </section>
+    <section class="panel split">
+        <div>
+            <h2>Food</h2>
+            <ul class="menu-list">
+                {% for item in menu.food %}
+                    <li>
+                        <div>
+                            <strong>{{ item.name }}</strong>
+                            <p class="muted">{{ item.description }}</p>
+                        </div>
+                        <span>{{ item.price }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <h2>Drinks</h2>
+            <ul class="menu-list">
+                {% for item in menu.drinks %}
+                    <li>
+                        <div>
+                            <strong>{{ item.name }}</strong>
+                            <p class="muted">{{ item.description }}</p>
+                        </div>
+                        <span>{{ item.price }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+{% else %}
+    <section class="page-head">
+        <h1>Food + Drink</h1>
+        <p>This venue does not currently offer a food or drink menu.</p>
+    </section>
+{% endif %}

@@ -1,0 +1,72 @@
+---
+layout: layouts/base.njk
+title: Food and Drink
+permalink: /menu/index.html
+---
+
+{% if site.features.menuEnabled %}
+    <section class="page-head">
+        <h1>Food + Drink</h1>
+        <p>Turn this section on only if your venue serves food and drinks.</p>
+    </section>
+    {% if menuOrdering and menuOrdering.enabled %}
+        <section class="panel ticketing-panel">
+            <h2>Online Ordering</h2>
+            <p>
+                Powered by {{ menuOrdering.platformName }}.
+                Let guests place food and drink orders before or during the show.
+            </p>
+            {% if menuOrdering.orderingUrl %}
+                <a class="button"
+                   href="{{ menuOrdering.orderingUrl }}"
+                   target="_blank"
+                   rel="noopener noreferrer">{{ menuOrdering.ctaLabel }}</a>
+            {% endif %}
+            {% if menuOrdering.embedUrl %}
+                <div class="ticket-embed">
+                    <iframe src="{{ menuOrdering.embedUrl }}"
+                            title="{{ menuOrdering.embedTitle }}"
+                            loading="lazy"
+                            referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            {% endif %}
+        </section>
+    {% endif %}
+    <section class="panel split">
+        <div>
+            <h2>Food</h2>
+            <ul class="menu-list" data-location-group="menu-food">
+                {% for item in menu.food %}
+                    <li data-location-item="{{ item.locationSlug or '' }}">
+                        <div>
+                            <strong>{{ item.name }}</strong>
+                            <p class="muted">{{ item.description }}</p>
+                        </div>
+                        <span>{{ item.price }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+            <p class="muted" data-location-empty="menu-food" hidden>No food items are currently assigned to this location.</p>
+        </div>
+        <div>
+            <h2>Drinks</h2>
+            <ul class="menu-list" data-location-group="menu-drinks">
+                {% for item in menu.drinks %}
+                    <li data-location-item="{{ item.locationSlug or '' }}">
+                        <div>
+                            <strong>{{ item.name }}</strong>
+                            <p class="muted">{{ item.description }}</p>
+                        </div>
+                        <span>{{ item.price }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+            <p class="muted" data-location-empty="menu-drinks" hidden>No drink items are currently assigned to this location.</p>
+        </div>
+    </section>
+{% else %}
+    <section class="page-head">
+        <h1>Food + Drink</h1>
+        <p>This venue does not currently offer a food or drink menu.</p>
+    </section>
+{% endif %}

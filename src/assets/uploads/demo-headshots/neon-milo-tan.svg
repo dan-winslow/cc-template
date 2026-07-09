@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700" role="img" aria-labelledby="title desc">
+  <title id="title">Milo Tan headshot card</title>
+  <desc id="desc">Stylized neon theme headshot card for Milo Tan.</desc>
+  <rect width="900" height="700" fill="#061223"/>
+  <g stroke="#23cfff" stroke-opacity="0.4"><path d="M0 180h900"/><path d="M0 250h900"/><path d="M0 320h900"/></g>
+  <circle cx="450" cy="286" r="88" fill="#ffd2b6"/>
+  <path d="M358 252c28-40 156-40 184 0" fill="#0a2334"/>
+  <rect x="332" y="390" width="236" height="170" rx="104" fill="#0b2e45"/>
+  <text x="60" y="610" fill="#bdf7ff" font-family="Arial Black, Arial" font-size="58">MILO TAN</text>
+</svg>

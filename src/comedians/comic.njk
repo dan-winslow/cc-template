@@ -1,0 +1,76 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: comedians.items
+  size: 1
+  alias: comic
+permalink: "/comedians/{{ (comic.slug or comic.name) | slugify }}/index.html"
+title: "{{ comic.name }} | Comedian"
+---
+
+{% set comicSlug = (comic.slug or comic.name) | slugify %}
+{% set submissionLink = comic.bioUpdateUrl or ((site.bioSubmissionBaseUrl and (site.bioSubmissionBaseUrl ~ '?comedian=' ~ comicSlug)) or '') %}
+<section class="page-head">
+    <p class="eyebrow">Performer Profile</p>
+    <h1>{{ comic.name }}</h1>
+    <p>{{ comic.blurb }}</p>
+</section>
+<section class="panel split performer-detail">
+    <img class="performer-image detail"
+         src="{{ comic.image }}"
+         alt="Portrait of {{ comic.name }}" />
+    <div>
+        <p><strong>Appearing:</strong> {{ comic.date | readableDate }}</p>
+        <p><strong>Show Type:</strong> {{ comic.showType }}</p>
+        <p><strong>Credits:</strong> {{ comic.credits }}</p>
+        <h2>Biography</h2>
+        <p>{{ comic.bio }}</p>
+        {% if comic.bioStatus == 'pending' %}
+            <p class="muted">A bio update draft is currently pending club approval.</p>
+        {% endif %}
+        {% set comicKey = comicSlug %}
+        {% set linkedShows = comicShowMap[comicKey] or [] %}
+        <h2>Tickets + Show Times</h2>
+        {% if linkedShows.length %}
+            <div class="cards two-up profile-shows"
+                 data-location-group="comic-profile-shows">
+                {% for show in linkedShows %}
+                    <article class="card" data-location-item="{{ show.locationSlug or '' }}">
+                        <p class="eyebrow">{{ show.date | readableDate }}</p>
+                        <h3>{{ show.title }}</h3>
+                        <p><strong>{{ show.time | readableTime }}</strong></p>
+                        {% if show.ticketPrice %}
+                            <p class="price">Tickets {{ show.ticketPrice }}</p>
+                        {% endif %}
+                        <div class="ticket-actions">
+                            {% if show.ticketUrl %}
+                                <a class="button"
+                                   href="{{ show.ticketUrl }}"
+                                   target="_blank"
+                                   rel="noopener noreferrer">Buy Tickets</a>
+                            {% endif %}
+                            {% if submissionLink %}
+                                <a class="button ghost"
+                                   href="{{ submissionLink }}"
+                                   target="_blank"
+                                   rel="noopener noreferrer">Submit Bio Update</a>
+                            {% endif %}
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+            <p class="muted" data-location-empty="comic-profile-shows" hidden>No upcoming ticketed appearances are listed for this location.</p>
+        {% else %}
+            <p class="muted">Show time and ticket details will appear once this comedian is added to the calendar.</p>
+            {% if submissionLink %}
+                <p>
+                    <a class="button ghost"
+                       href="{{ submissionLink }}"
+                       target="_blank"
+                       rel="noopener noreferrer">Submit Bio Update</a>
+                </p>
+            {% endif %}
+        {% endif %}
+        <a class="button" href="/comedians/">Back to all comedians</a>
+    </div>
+</section>

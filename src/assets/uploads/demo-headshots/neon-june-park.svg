@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700" role="img" aria-labelledby="title desc">
+  <title id="title">June Park headshot card</title>
+  <desc id="desc">Stylized neon theme headshot card for June Park.</desc>
+  <rect width="900" height="700" fill="#061323"/>
+  <circle cx="630" cy="240" r="170" fill="#0d4365" opacity="0.75"/>
+  <circle cx="450" cy="286" r="88" fill="#ffd0b2"/>
+  <path d="M354 252c34-40 162-40 196 0" fill="#0a2233"/>
+  <rect x="330" y="390" width="240" height="170" rx="104" fill="#0c2f45"/>
+  <text x="60" y="610" fill="#b8f6ff" font-family="Arial Black, Arial" font-size="58">JUNE PARK</text>
+</svg>

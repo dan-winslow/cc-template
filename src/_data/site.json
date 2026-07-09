@@ -1,0 +1,47 @@
+{
+  "clubName": "Laugh Track Lounge",
+  "defaultLocation": "downtown",
+  "locations": [
+    {
+      "slug": "downtown",
+      "name": "Downtown",
+      "city": "Chicago",
+      "address": "1452 Wells St, Chicago, IL",
+      "phone": "(312) 555-0186",
+      "email": "bookings@laughtracklounge.com"
+    },
+    {
+      "slug": "west-loop",
+      "name": "West Loop",
+      "city": "Chicago",
+      "address": "941 Randolph St, Chicago, IL",
+      "phone": "(312) 555-0199",
+      "email": "westloop@laughtracklounge.com"
+    }
+  ],
+  "tagline": "Big laughs, low lights, packed nights.",
+  "description": "A modern comedy room for rising stars, local killers, and surprise drop-ins every weekend.",
+  "promoCopy": "Reserve early for sold-out weekends and two-show Saturdays.",
+  "city": "Chicago",
+  "doorsOpen": "6:00 PM",
+  "address": "1452 Wells St, Chicago, IL",
+  "phone": "(312) 555-0186",
+  "email": "bookings@laughtracklounge.com",
+  "bioSubmissionBaseUrl": "",
+  "ticketing": {
+    "enabled": true,
+    "platformName": "Eventbrite",
+    "eventsPageUrl": "https://www.eventbrite.com/o/laugh-track-lounge-123456789",
+    "embedUrl": ""
+  },
+  "menuOrdering": {
+    "enabled": false,
+    "provider": "",
+    "platformName": "",
+    "orderingUrl": "",
+    "embedUrl": ""
+  },
+  "features": {
+    "menuEnabled": true
+  }
+}

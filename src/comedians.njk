@@ -1,0 +1,31 @@
+---
+layout: layouts/base.njk
+title: Upcoming Comedians
+permalink: /comedians/index.html
+---
+
+<section class="page-head">
+    <h1>Upcoming Comedians</h1>
+    <p>Give every performer a quick spotlight and ticket-driving context.</p>
+</section>
+<section class="cards two-up" data-location-group="comedians-list">
+    {% for comic in comedians.items %}
+        {% set comicSlug = (comic.slug or comic.name) | slugify %}
+        <a class="card performer performer-link"
+           href="/{{ comicSlug }}/"
+           data-location-item="{{ comic.locationSlug or '' }}">
+            <img class="performer-image"
+                 src="{{ comic.image }}"
+                 alt="Portrait of {{ comic.name }}"
+                 loading="lazy" />
+            <div class="performer-content">
+                <p class="eyebrow">{{ comic.date | readableDate }}</p>
+                <h2>{{ comic.name }}</h2>
+                <p>{{ comic.blurb }}</p>
+                <p class="muted">Known for: {{ comic.credits }}</p>
+                <p class="price">{{ comic.showType }}</p>
+            </div>
+        </a>
+    {% endfor %}
+</section>
+<p class="muted" data-location-empty="comedians-list" hidden>No comedians are assigned to this location yet.</p>

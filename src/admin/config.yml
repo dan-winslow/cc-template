@@ -1,0 +1,170 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "src/assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "site"
+    label: "Site Settings"
+    files:
+      - label: "Club Settings"
+        name: "clubSettings"
+        file: "src/_data/site.json"
+        fields:
+          - { label: "Club Name", name: "clubName", widget: "string" }
+          - { label: "Default Location Slug", name: "defaultLocation", widget: "string", required: false, hint: "Optional. If set, this location is selected first in the location switcher." }
+          - label: "Locations"
+            name: "locations"
+            widget: "list"
+            required: false
+            summary: "{{fields.slug}} - {{fields.name}}"
+            fields:
+              - { label: "Location Slug", name: "slug", widget: "string", hint: "Required for switching and filtering. Example: downtown" }
+              - { label: "Location Name", name: "name", widget: "string", hint: "Shown in the dropdown switcher." }
+              - { label: "City", name: "city", widget: "string", required: false }
+              - { label: "Address", name: "address", widget: "string", required: false }
+              - { label: "Phone", name: "phone", widget: "string", required: false }
+              - { label: "Email", name: "email", widget: "string", required: false }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Promo Copy", name: "promoCopy", widget: "text" }
+          - { label: "City", name: "city", widget: "string" }
+          - { label: "Doors Open", name: "doorsOpen", widget: "string" }
+          - { label: "Address", name: "address", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Bio Submission Base URL", name: "bioSubmissionBaseUrl", widget: "string", required: false, hint: "Optional fallback form URL. A comedian slug is appended as ?comedian=<slug>." }
+          - label: "Ticketing"
+            name: "ticketing"
+            widget: "object"
+            fields:
+              - { label: "Enable Ticketing", name: "enabled", widget: "boolean", default: true }
+              - { label: "Platform Name", name: "platformName", widget: "string", required: false }
+              - { label: "Events Page URL", name: "eventsPageUrl", widget: "string", required: false }
+              - { label: "Embed URL (optional)", name: "embedUrl", widget: "string", required: false }
+          - label: "Menu Ordering"
+            name: "menuOrdering"
+            widget: "object"
+            fields:
+              - { label: "Enable Online Ordering", name: "enabled", widget: "boolean", default: false }
+              - label: "Provider Preset"
+                name: "provider"
+                widget: "select"
+                required: false
+                options:
+                  - { label: "Auto Detect", value: "" }
+                  - { label: "Toast", value: "toast" }
+                  - { label: "Square", value: "square" }
+                  - { label: "ChowNow", value: "chownow" }
+                  - { label: "Uber Eats", value: "ubereats" }
+                  - { label: "DoorDash", value: "doordash" }
+                  - { label: "Grubhub", value: "grubhub" }
+                  - { label: "Generic", value: "generic" }
+              - { label: "Platform Name", name: "platformName", widget: "string", required: false }
+              - { label: "Ordering URL", name: "orderingUrl", widget: "string", required: false }
+              - { label: "Embed URL (optional)", name: "embedUrl", widget: "string", required: false }
+          - label: "Features"
+            name: "features"
+            widget: "object"
+            fields:
+              - { label: "Enable Menu Page", name: "menuEnabled", widget: "boolean", default: true }
+
+  - name: "shows"
+    label: "Show Schedule"
+    files:
+      - label: "Shows"
+        name: "showsFile"
+        file: "src/_data/shows.json"
+        fields:
+          - label: "Shows"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.date}} - {{fields.title}}"
+            fields:
+              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+              - { label: "Location Slug", name: "locationSlug", widget: "string", required: false, hint: "Optional. Must match a Site Settings location slug. Leave empty to show this item for all locations." }
+              - { label: "Time", name: "time", widget: "string", hint: "24-hour format HH:mm" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Host", name: "host", widget: "string" }
+              - { label: "Headliner", name: "headliner", widget: "string" }
+              - { label: "Headliner Slug (optional)", name: "headlinerSlug", widget: "string", required: false, hint: "Use comedian slug, e.g. maya-patel, to link this show to a comedian profile." }
+              - { label: "Tour Poster", name: "image", widget: "image", required: false, hint: "Upload a show or tour poster image for cards and event highlights." }
+              - { label: "Notes", name: "notes", widget: "text" }
+              - { label: "Ticket Price", name: "ticketPrice", widget: "string" }
+              - { label: "Ticket URL", name: "ticketUrl", widget: "string", required: false }
+
+  - name: "comedians"
+    label: "Comedians"
+    files:
+      - label: "Comedians"
+        name: "comediansFile"
+        file: "src/_data/comedians.json"
+        fields:
+          - label: "Comedians"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.name}} - {{fields.date}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Public Slug", name: "slug", widget: "string", required: false, hint: "Shareable short path, e.g. funny-person for /funny-person." }
+              - { label: "Location Slug", name: "locationSlug", widget: "string", required: false, hint: "Optional. Must match a Site Settings location slug. Leave empty to show this item for all locations." }
+              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+              - { label: "Blurb", name: "blurb", widget: "text" }
+              - { label: "Image URL", name: "image", widget: "string" }
+              - { label: "Biography", name: "bio", widget: "text" }
+              - { label: "Bio Update Link (share with comedian/manager)", name: "bioUpdateUrl", widget: "string", required: false }
+              - label: "Bio Status"
+                name: "bioStatus"
+                widget: "select"
+                default: "approved"
+                options:
+                  - { label: "Approved", value: "approved" }
+                  - { label: "Pending Review", value: "pending" }
+              - { label: "Pending Bio Draft (internal)", name: "pendingBio", widget: "text", required: false }
+              - { label: "Credits", name: "credits", widget: "string" }
+              - { label: "Show Type", name: "showType", widget: "string" }
+
+  - name: "menu"
+    label: "Menu"
+    files:
+      - label: "Food and Drink"
+        name: "menuFile"
+        file: "src/_data/menu.json"
+        fields:
+          - label: "Food"
+            name: "food"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Location Slug", name: "locationSlug", widget: "string", required: false, hint: "Optional. Must match a Site Settings location slug. Leave empty to show this item for all locations." }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Price", name: "price", widget: "string" }
+              - { label: "Image URL", name: "image", widget: "string", required: false }
+          - label: "Drinks"
+            name: "drinks"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Location Slug", name: "locationSlug", widget: "string", required: false, hint: "Optional. Must match a Site Settings location slug. Leave empty to show this item for all locations." }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Price", name: "price", widget: "string" }
+              - { label: "Image URL", name: "image", widget: "string", required: false }
+
+  - name: "booking"
+    label: "Booking"
+    files:
+      - label: "Booking Packages"
+        name: "bookingFile"
+        file: "src/_data/booking.json"
+        fields:
+          - label: "Packages"
+            name: "packages"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Location Slug", name: "locationSlug", widget: "string", required: false, hint: "Optional. Must match a Site Settings location slug. Leave empty to show this package for all locations." }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Starting Price", name: "startingPrice", widget: "string" }
+              - { label: "Capacity", name: "capacity", widget: "string" }

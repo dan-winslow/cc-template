@@ -1,0 +1,56 @@
+{
+  "items": [
+    {
+      "date": "2026-07-02",
+      "locationSlug": "downtown",
+      "time": "19:30",
+      "title": "Thursday Story Riot",
+      "host": "Rene Ochoa",
+      "headliner": "Maya Patel",
+      "headlinerSlug": "maya-patel",
+      "image": "https://picsum.photos/seed/thursday-story-riot/700/900",
+      "notes": "Fast sets, crowd work, and new material.",
+      "ticketPrice": "$18",
+      "ticketUrl": "https://www.eventbrite.com/e/thursday-story-riot-tickets-100001"
+    },
+    {
+      "date": "2026-07-03",
+      "locationSlug": "downtown",
+      "time": "20:00",
+      "title": "Friday Main Room",
+      "host": "Jules Carter",
+      "headliner": "DeAndre Wells",
+      "headlinerSlug": "deandre-wells",
+      "image": "https://picsum.photos/seed/friday-main-room/700/900",
+      "notes": "National touring lineup.",
+      "ticketPrice": "$28",
+      "ticketUrl": "https://www.eventbrite.com/e/friday-main-room-tickets-100002"
+    },
+    {
+      "date": "2026-07-04",
+      "locationSlug": "west-loop",
+      "time": "21:30",
+      "title": "Holiday Late Show",
+      "host": "Lana Kim",
+      "headliner": "Tori Banks",
+      "headlinerSlug": "tori-banks",
+      "image": "https://picsum.photos/seed/holiday-late-show/700/900",
+      "notes": "Adults-only special with surprise guests.",
+      "ticketPrice": "$32",
+      "ticketUrl": "https://www.eventbrite.com/e/holiday-late-show-tickets-100003"
+    },
+    {
+      "date": "2026-07-09",
+      "locationSlug": "west-loop",
+      "time": "19:00",
+      "title": "New Faces Showcase",
+      "host": "Nico Barr",
+      "headliner": "Ensemble",
+      "headlinerSlug": "nico-barr",
+      "image": "https://picsum.photos/seed/new-faces-showcase/700/900",
+      "notes": "Spotlighting rising local comedians.",
+      "ticketPrice": "$15",
+      "ticketUrl": "https://www.eventbrite.com/e/new-faces-showcase-tickets-100004"
+    }
+  ]
+}
