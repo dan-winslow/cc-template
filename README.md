@@ -122,7 +122,7 @@ Tour poster upload:
 - Sanity CMS: Show document -> `Tour Poster` image field.
 - Synced output writes poster URL into `shows.items[].image` for template rendering.
 
-## CMS Option 1: Decap CMS (Git-based)
+## CMS Option 1: Decap CMS (Git-based, Netlify)
 
 Admin files:
 
@@ -131,10 +131,48 @@ Admin files:
 
 Setup steps:
 
-1. Deploy to Netlify (or equivalent Decap-compatible host).
-2. Enable Identity + Git Gateway.
-3. Visit `/admin/` and log in.
-4. Update settings, schedule, comedians, menu, and booking packages.
+1. Deploy to Netlify.
+2. Enable Identity and Git Gateway in Netlify project settings.
+3. Invite client editors in Netlify Identity.
+4. Visit `/admin/` and log in.
+5. Update settings, schedule, comedians, menu, and booking packages.
+
+### Netlify Launch Checklist
+
+Use this checklist before handing admin access to a client.
+
+1. Deploy status
+	- Confirm latest commit is published in Netlify.
+	- Confirm site loads at production URL.
+2. Identity setup
+	- Netlify Dashboard -> Identity -> Enable Identity.
+	- Set registration preference (Invite only recommended for client projects).
+3. Git Gateway
+	- Netlify Dashboard -> Identity -> Services -> Enable Git Gateway.
+4. Editor access
+	- Invite each editor email from Identity.
+	- Confirm each user accepts invite and sets password.
+5. Admin route
+	- Open `/admin/` on production domain.
+	- Confirm Decap login screen appears.
+6. Write test
+	- Log in as editor and change one low-risk value (for example `site.tagline`).
+	- Save and publish.
+	- Confirm a commit is created in Git provider.
+	- Confirm Netlify auto-build triggers and deployed site shows the update.
+7. Media test
+	- Upload one image in CMS (for example show `Tour Poster`).
+	- Confirm file appears under `src/assets/uploads` in repo.
+	- Confirm image renders on site after deploy.
+8. Rollback safety
+	- Verify Netlify deploy history is enabled.
+	- Verify Git history is intact for content rollback.
+
+Common issues:
+
+- `/admin/` shows blank page: check browser console and confirm `src/admin/index.html` is being published.
+- Login works but publish fails: confirm Git Gateway is enabled and user has repo write permissions.
+- Upload fails: confirm `media_folder` and `public_folder` values in `src/admin/config.yml` are unchanged.
 
 ## CMS Option 2: Sanity (Hosted Structured CMS)
 
@@ -163,5 +201,5 @@ Environment variables are documented in `.env.example`.
 
 1. Clone this template for a client.
 2. Pick a style baseline: default, classic demo, or neon demo.
-3. Connect either Decap CMS (simple git workflow) or Sanity (hosted multi-tenant workflow).
+3. Connect Decap CMS (Netlify) or Sanity CMS.
 4. Replace sample content and deploy.
