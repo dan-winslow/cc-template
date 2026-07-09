@@ -1,60 +1,73 @@
 {
   "items": [
     {
+      "locationSlug": "downtown",
+      "bio": "Maya Patel built her voice in packed basement clubs before touring nationally with a set that blends family stories, immigrant humor, and sharp social observations. Her latest hour focuses on modern city life, culture clashes, and finding absurdity in everyday routines.",
       "name": "Maya Patel",
       "slug": "maya-patel",
-      "locationSlug": "downtown",
       "date": "2026-07-02",
+      "pendingBio": "",
+      "showType": "Headliner",
+      "credits": "Comedy Central, NPR",
+      "bioStatus": "approved",
       "blurb": "Sharp, autobiographical storytelling with punchy tags.",
       "image": "https://picsum.photos/seed/maya-patel/900/700",
-      "bioUpdateUrl": "",
-      "bioStatus": "approved",
-      "pendingBio": "",
-      "bio": "Maya Patel built her voice in packed basement clubs before touring nationally with a set that blends family stories, immigrant humor, and sharp social observations. Her latest hour focuses on modern city life, culture clashes, and finding absurdity in everyday routines.",
-      "credits": "Comedy Central, NPR",
-      "showType": "Headliner"
+      "bioUpdateUrl": ""
     },
     {
+      "locationSlug": "downtown",
+      "bio": "DeAndre Wells is known for high-voltage crowd work and lightning-fast improvisation that turns each show into a one-night-only experience. He has toured with major theater acts and is currently developing a long-form special centered on audience storytelling.",
       "name": "DeAndre Wells",
       "slug": "deandre-wells",
-      "locationSlug": "downtown",
       "date": "2026-07-03",
+      "pendingBio": "",
+      "showType": "Headliner",
+      "credits": "Netflix Is A Joke Fest",
+      "bioStatus": "approved",
       "blurb": "Big-room energy and high-speed crowd interaction.",
       "image": "https://picsum.photos/seed/deandre-wells/900/700",
-      "bioUpdateUrl": "",
-      "bioStatus": "approved",
-      "pendingBio": "",
-      "bio": "DeAndre Wells is known for high-voltage crowd work and lightning-fast improvisation that turns each show into a one-night-only experience. He has toured with major theater acts and is currently developing a long-form special centered on audience storytelling.",
-      "credits": "Netflix Is A Joke Fest",
-      "showType": "Headliner"
+      "bioUpdateUrl": ""
     },
     {
+      "locationSlug": "west-loop",
+      "bio": "Tori Banks combines stand-up with rhythmic bits and musical transitions, creating a set that is both theatrical and intimate. Her writing balances dark themes with playful delivery, earning her recurring festival invitations and sold-out late shows.",
       "name": "Tori Banks",
       "slug": "tori-banks",
-      "locationSlug": "west-loop",
       "date": "2026-07-04",
+      "pendingBio": "",
+      "showType": "Special Event",
+      "credits": "SiriusXM, Don't Tell",
+      "bioStatus": "approved",
       "blurb": "Darkly playful observations with a musical edge.",
       "image": "https://picsum.photos/seed/tori-banks/900/700",
-      "bioUpdateUrl": "",
-      "bioStatus": "approved",
-      "pendingBio": "",
-      "bio": "Tori Banks combines stand-up with rhythmic bits and musical transitions, creating a set that is both theatrical and intimate. Her writing balances dark themes with playful delivery, earning her recurring festival invitations and sold-out late shows.",
-      "credits": "SiriusXM, Don't Tell",
-      "showType": "Special Event"
+      "bioUpdateUrl": ""
     },
     {
+      "locationSlug": "west-loop",
+      "bio": "Nico Barr came up through open mic marathons and developed a punchline-heavy style built for fast rooms and late crowds. Offstage, Nico mentors new comics and produces monthly showcases that spotlight emerging local voices.",
       "name": "Nico Barr",
       "slug": "nico-barr",
-      "locationSlug": "west-loop",
       "date": "2026-07-09",
+      "pendingBio": "",
+      "showType": "Host",
+      "credits": "The Laugh Factory",
+      "bioStatus": "approved",
       "blurb": "Fast one-liners and Midwest chaos energy.",
       "image": "https://picsum.photos/seed/nico-barr/900/700",
-      "bioUpdateUrl": "",
+      "bioUpdateUrl": ""
+    },
+    {
+      "locationSlug": "downtown",
+      "bio": "- ",
+      "name": "Your mom",
+      "slug": "yo-mamma",
+      "date": "2026-07-09",
+      "showType": "N/A",
+      "credits": "N/A",
       "bioStatus": "approved",
-      "pendingBio": "",
-      "bio": "Nico Barr came up through open mic marathons and developed a punchline-heavy style built for fast rooms and late crowds. Offstage, Nico mentors new comics and produces monthly showcases that spotlight emerging local voices.",
-      "credits": "The Laugh Factory",
-      "showType": "Host"
+      "blurb": " - ",
+      "image": "N/A",
+      "bioUpdateUrl": "yo-mamma-update"
     }
   ]
 }
